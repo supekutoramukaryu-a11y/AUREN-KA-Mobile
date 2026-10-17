@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#09090d">
+<meta name="description" content="AUREN — tu mundo, en tus manos.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>AUREN · KA v1.0</title>
+<style>
+:root{--bg:#08080c;--panel:#121219;--panel2:#191922;--line:#292936;--red:#e11d48;--wine:#7f1d35;--gold:#c8a45d;--text:#f5f5fa;--muted:#aaaabb}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% 0%,#28101a 0%,var(--bg) 48%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+button,input,select{font:inherit}button{cursor:pointer}.wrap{max-width:760px;margin:auto;padding:20px 16px 36px}.top{display:flex;align-items:center;gap:14px;margin:6px 0 24px}.mark{width:58px;height:58px;display:grid;place-items:center;border:2px solid #eee;transform:rotate(45deg);border-radius:9px;box-shadow:0 0 24px #e11d4826;flex-shrink:0}.mark span{transform:rotate(-45deg);font-weight:900;font-size:21px;letter-spacing:-2px}.brand{font-size:27px;letter-spacing:.25em;font-weight:700}.tag{color:var(--muted);font-size:11px;letter-spacing:.2em;margin-top:3px}.version{margin-left:auto;color:var(--gold);font-size:11px;border:1px solid #5b4726;border-radius:999px;padding:6px 9px}.hero,.card{background:linear-gradient(145deg,#15151d,#0e0e14);border:1px solid var(--line);border-radius:20px;padding:18px;margin-bottom:14px;box-shadow:0 12px 35px #0005}.eyebrow{color:var(--gold);font-size:11px;letter-spacing:.18em;text-transform:uppercase}.hero h1{font-size:clamp(26px,6vw,38px);margin:8px 0}.hero p{color:var(--muted);margin:0;line-height:1.5}.status{display:inline-flex;align-items:center;gap:8px;color:#9de0b8;font-size:12px;margin-top:14px}.dot{width:7px;height:7px;background:#55d68b;border-radius:50%;box-shadow:0 0 12px #55d68b}.voicearea{text-align:center;padding:14px 0 4px}.mic{width:92px;height:92px;border-radius:50%;border:1px solid #ff647e;background:radial-gradient(circle,#6e1429,#180b12 70%);color:white;font-size:32px;box-shadow:0 0 0 9px #e11d4810,0 0 35px #e11d4830}.mic.listening{animation:pulse 1.2s infinite}@keyframes pulse{50%{box-shadow:0 0 0 16px #e11d4815,0 0 45px #e11d4870}}.sub{color:var(--muted);font-size:12px;margin:12px 0}.chat{height:150px;overflow:auto;background:#09090e;border:1px solid var(--line);border-radius:13px;padding:12px;font-size:13px;line-height:1.5;white-space:pre-wrap}.inputrow{display:flex;gap:8px;margin-top:10px}.inputrow input{min-width:0;flex:1}.field{width:100%;background:#0a0a10;border:1px solid #333342;border-radius:11px;color:var(--text);padding:12px;outline:none}.field:focus{border-color:var(--red)}.btn{background:var(--red);color:white;border:0;border-radius:11px;padding:11px 14px;font-weight:650}.btn.secondary{background:#22222c;border:1px solid #3a3a48}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.appbtn{display:flex;align-items:center;gap:10px;background:#101018;border:1px solid var(--line);color:white;border-radius:13px;padding:13px;text-align:left;min-width:0}.appbtn .ico{font-size:22px}.appbtn small{display:block;color:var(--muted);font-size:11px;margin-top:2px}.sectiontitle{font-size:15px;margin:0 0 12px}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.row>*{flex:1}.note{font-size:11px;color:var(--muted);line-height:1.5}.alarmform{display:grid;grid-template-columns:1fr 1fr auto;gap:8px}.alarm{padding:10px;border:1px solid var(--line);border-radius:10px;margin-top:8px;display:flex;justify-content:space-between;gap:8px;font-size:13px}.footer{text-align:center;color:#6f6f80;font-size:10px;letter-spacing:.13em;padding:10px}
+@media(max-width:420px){.brand{font-size:22px}.grid{grid-template-columns:1fr 1fr}.alarmform{grid-template-columns:1fr 1fr}.alarmform button{grid-column:1/-1}.wrap{padding:14px 12px 28px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header class="top"><div class="mark"><span>KZ</span></div><div><div class="brand">AUREN</div><div class="tag">TU MUNDO, EN TUS MANOS</div></div><div class="version">KA · v1.0</div></header>
+<section class="hero"><div class="eyebrow">Asistente personal · primera versión</div><h1>¿Qué necesitas, señor?</h1><p>Un punto de partida para tu asistente: voz desde la página, accesos rápidos y herramientas básicas. Personalízalo desde Ajustes.</p><div class="status"><span class="dot"></span><span id="status">Sistema listo · interacción manual</span></div></section>
+<section class="card">
+<div class="voicearea"><button class="mic" id="mic" aria-label="Hablar">🎙</button><div class="sub" id="voicehint">Pulsa el micrófono para hablar</div></div>
+<div class="chat" id="chat" aria-live="polite">AUREN: En línea, Kaze. Esta versión inicial funciona mientras la página está abierta.\nAUREN: Prueba «abre YouTube», «qué hora es» o «pon una alarma a las 7:30».</div>
+<form class="inputrow" id="chatform"><input class="field" id="command" placeholder="Escribe una orden..." autocomplete="off"><button class="btn" type="submit">Enviar</button></form>
+</section>
+<section class="card"><h2 class="sectiontitle">Accesos rápidos</h2><div class="grid">
+<button class="appbtn" data-url="https://www.google.com"><span class="ico">⌕</span><span>Google<small>Buscar en internet</small></span></button>
+<button class="appbtn" data-url="https://www.youtube.com"><span class="ico">▶</span><span>YouTube<small>Vídeos y canales</small></span></button>
+<button class="appbtn" data-url="https://open.spotify.com"><span class="ico">♫</span><span>Spotify<small>Música y podcasts</small></span></button>
+<button class="appbtn" data-url="https://web.whatsapp.com"><span class="ico">☏</span><span>WhatsApp Web<small>Mensajes en navegador</small></span></button>
+</div><p class="note">Los accesos abren servicios web. La apertura directa de aplicaciones nativas depende del dispositivo y de los permisos del sistema.</p></section>
+<section class="card"><h2 class="sectiontitle">Alarmas y recordatorios</h2><form class="alarmform" id="alarmform"><input class="field" type="time" id="alarmtime" required><input class="field" id="alarmtext" placeholder="Ej. Estudiar electricidad" maxlength="80"><button class="btn" type="submit">Añadir</button></form><div id="alarms"></div><p class="note">En esta versión, las alarmas solo pueden avisar mientras AUREN permanece abierto; el navegador puede suspenderlas en segundo plano. Para alarmas fiables con la app cerrada necesitaremos una aplicación Android nativa.</p></section>
+<section class="card"><h2 class="sectiontitle">Personalización</h2><div class="row"><label class="note">Voz del asistente<select class="field" id="voicechoice"><option value="male">Masculina (preferida)</option><option value="female">Femenina</option><option value="system">Voz predeterminada</option></select></label><label class="note">Tema<select class="field" id="theme"><option value="dark">Oscuro · rojo vino</option><option value="light">Claro</option></select></label></div><div class="row" style="margin-top:10px"><button class="btn secondary" id="testvoice" type="button">Probar voz</button><button class="btn secondary" id="notify" type="button">Permitir notificaciones</button></div><p class="note">La voz exacta depende de las voces instaladas en tu navegador/dispositivo. Este sitio no puede solicitar ni leer tus contactos, ni acceder a toda tu galería automáticamente; esos permisos requieren funciones específicas y consentimiento explícito.</p></section>
+<footer class="footer">AUREN · PROYECTO KA · PROTOTIPO WEB v1.0</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id), chat=$('chat');
+function sayLine(who,msg){chat.textContent += `\\n${who}: ${msg}`;chat.scrollTop=chat.scrollHeight}
+function speak(msg){if(!('speechSynthesis' in window))return;window.speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(msg);u.lang='es-ES';const choice=$('voicechoice').value;const voices=window.speechSynthesis.getVoices();let candidates=voices.filter(v=>/es(-|_)/i.test(v.lang));if(choice==='female')u.voice=candidates.find(v=>/female|mujer|monica|helena|lucia|female/i.test(v.name))||candidates[0];else if(choice==='male')u.voice=candidates.find(v=>/male|hombre|pablo|jorge|diego|male/i.test(v.name))||candidates.find(v=>!/female|mujer|monica|helena|lucia/i.test(v.name))||candidates[0];else u.voice=candidates[0]||null;window.speechSynthesis.speak(u)}
+function reply(msg,voice=true){sayLine('AUREN',msg);if(voice)speak(msg)}
+function openUrl(url){window.open(url,'_blank','noopener,noreferrer')}
+function runCommand(raw){let s=raw.toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').trim();sayLine('KAZE',raw);
+if(/\\b(hola|buenos dias|buenas tardes|buenas noches)\\b/.test(s)){reply('Hola, Kaze. ¿Qué necesitas, señor?');return}
+if(s.includes('hora')){reply('Son las '+new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'})+'.');return}
+if(s.includes('fecha')||s.includes('que dia')){reply('Hoy es '+new Date().toLocaleDateString('es-ES')+'.');return}
+if(s.includes('youtube')){openUrl('https://www.youtube.com');reply('Abriendo YouTube.');return}
+if(s.includes('spotify')||s.includes('musica')){openUrl('https://open.spotify.com');reply('Abriendo Spotify.');return}
+if(s.includes('whatsapp')){openUrl('https://web.whatsapp.com');reply('Abriendo WhatsApp Web.');return}
+if(s.includes('google')||s.includes('busca en internet')){let q=raw.replace(/.*?(google|busca en internet)/i,'').trim();openUrl('https://www.google.com/search?q='+encodeURIComponent(q||'Google'));reply(q?'Buscando '+q+'.':'Abriendo Google.');return}
+if(s.includes('ayuda')||s.includes('que puedes hacer')){reply('Puedo abrir Google, YouTube, Spotify y WhatsApp Web; decirte la hora y la fecha; y crear alarmas mientras esta página permanezca abierta.');return}
+if(s.includes('alarma')){reply('Para programar una alarma, usa el panel Alarmas y recordatorios.');return}
+reply('Todavía no tengo una acción para esa orden. Escribe «ayuda» para ver las funciones disponibles.')}
+$('chatform').addEventListener('submit',e=>{e.preventDefault();let v=$('command').value.trim();if(v){$('command').value='';runCommand(v)}});
+document.querySelectorAll('[data-url]').forEach(b=>b.addEventListener('click',()=>openUrl(b.dataset.url)));
+let recognition=null, listening=false;
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+if(SR){recognition=new SR();recognition.lang='es-ES';recognition.interimResults=false;recognition.maxAlternatives=1;recognition.onstart=()=>{listening=true;$('mic').classList.add('listening');$('voicehint').textContent='Te escucho…';$('status').textContent='Escuchando';};recognition.onend=()=>{listening=false;$('mic').classList.remove('listening');$('voicehint').textContent='Pulsa el micrófono para hablar';$('status').textContent='Sistema listo · interacción manual'};recognition.onerror=e=>{reply('No he podido usar el micrófono: '+e.error+'. Comprueba el permiso y vuelve a intentarlo.',false)};recognition.onresult=e=>runCommand(e.results[0][0].transcript)}else{$('voicehint').textContent='Este navegador no admite reconocimiento de voz; prueba Chrome.'}
+$('mic').addEventListener('click',()=>{if(!recognition){reply('El reconocimiento de voz no está disponible en este navegador. Prueba Chrome en Android.');return}try{if(listening)recognition.stop();else recognition.start()}catch(e){reply('No he podido iniciar el micrófono. Espera un momento y prueba de nuevo.',false)}});
+$('testvoice').addEventListener('click',()=>speak('Hola, Kaze. Soy AUREN. ¿Qué necesitas, señor?'));
+$('notify').addEventListener('click',async()=>{if(!('Notification'in window)){reply('Este navegador no admite notificaciones.',false);return}let p=await Notification.requestPermission();reply(p==='granted'?'Notificaciones permitidas.':'No se han permitido las notificaciones.',false)});
+let alarms=[];
+$('alarmform').addEventListener('submit',e=>{e.preventDefault();const t=$('alarmtime').value,label=$('alarmtext').value.trim()||'Alarma AUREN';if(!t)return;alarms.push({t,label,id:Date.now(),fired:false});renderAlarms();$('alarmtext').value='';reply('Alarma añadida para las '+t+'. Recuerda mantener AUREN abierto.',false)});
+function renderAlarms(){$('alarms').innerHTML='';alarms.forEach(a=>{let d=document.createElement('div');d.className='alarm';let s=document.createElement('span');s.textContent=a.t+' · '+a.label;let b=document.createElement('button');b.className='btn secondary';b.textContent='Eliminar';b.onclick=()=>{alarms=alarms.filter(x=>x.id!==a.id);renderAlarms()};d.append(s,b);$('alarms').append(d)})}
+setInterval(()=>{let now=new Date(),t=now.toTimeString().slice(0,5);alarms.forEach(a=>{if(a.t===t&&!a.fired){a.fired=true;reply('Aviso: '+a.label+'.');if('Notification'in window&&Notification.permission==='granted')new Notification('AUREN · '+a.t,{body:a.label})}})},10000);
+$('theme').addEventListener('change',e=>{if(e.target.value==='light'){document.documentElement.style.setProperty('--bg','#f4f4f7');document.documentElement.style.setProperty('--panel','#ffffff');document.documentElement.style.setProperty('--panel2','#eeeeF4');document.documentElement.style.setProperty('--text','#16161d');document.documentElement.style.setProperty('--muted','#555565');document.body.style.background='#f4f4f7'}else{location.reload()}});
+if('serviceWorker'in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script>
+</body></html>
